@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kebijakan Privasi</title>
+<meta name="theme-color" content="#0b1f1b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Grandstander:wght@700;800&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="atas">
+  <a class="logo" href="./"><span class="logo-tanda" id="logo-tanda" aria-hidden="true"></span><span data-toko="nama">Toko</span></a>
+  <a class="tombol garis" href="./#katalog">Lihat produk</a>
+</header>
+<main class="legal">
+  <h1>Kebijakan Privasi</h1>
+  <p class="kecil">Terakhir diperbarui: <span data-toko="diperbarui"></span></p>
+  <p class="contoh">Ini contoh teks. Sesuaikan dengan cara kerja tokomu sebelum dipakai.</p>
+  <h2>Data yang dikumpulkan website ini</h2>
+  <p>Website ini tidak meminta data pribadi dan tidak memakai cookie pelacak. Website hanya menampilkan katalog.</p>
+  <h2>Data saat membayar</h2>
+  <p>Nama, email, nomor telepon, dan data pembayaran diisi di halaman Lynk.id, bukan di website ini. Data tersebut diatur oleh kebijakan privasi Lynk.id. Kami menerima nama dan email pembeli dari Lynk.id untuk mengirim produk dan membantu bila ada kendala.</p>
+  <h2>Chat WhatsApp</h2>
+  <p>Kalau kamu menghubungi lewat WhatsApp, nomor dan isi chat hanya dipakai untuk menjawab pertanyaanmu.</p>
+  <h2>Hapus data</h2>
+  <p>Kamu bisa meminta data pembelianmu dihapus lewat kontak di bawah.</p>
+  <h2>Kontak</h2>
+  <p>Pertanyaan soal halaman ini bisa dikirim lewat <span id="kontak-legal">kontak di bagian bawah halaman utama</span>.</p>
+  <p><a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a> · <a href="kebijakan-privasi.html">Kebijakan Privasi</a> · <a href="kebijakan-refund.html">Pengembalian Dana</a></p>
+</main>
+<script src="data/produk.js"></script>
+<script>
+  // isi nama toko & angka dari data/produk.js
+  const T = window.TOKO || {};
+  document.querySelectorAll("[data-toko]").forEach((el) => (el.textContent = T[el.dataset.toko] ?? ""));
+  document.title += " | " + (T.nama || "Toko");
+  document.getElementById("logo-tanda").textContent = (T.nama || "").trim().charAt(0);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const k = [T.email && '<a href="mailto:' + esc(T.email) + '">' + esc(T.email) + '</a>', T.whatsapp && '<a href="https://wa.me/' + T.whatsapp.replace(/\D/g, "") + '">WhatsApp ' + esc(T.whatsapp) + '</a>'].filter(Boolean);
+  if (k.length) document.getElementById("kontak-legal").innerHTML = k.join(" atau ");
+</script>
+</body>
+</html>

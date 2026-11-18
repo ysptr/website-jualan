@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Toko</title>
+<meta name="description" content="Template dan produk digital siap pakai untuk bikin konten. Bayar lewat Lynk.id.">
+<meta name="theme-color" content="#0b1f1b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Grandstander:wght@700;800&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="langit" class="langit" aria-hidden="true"></canvas>
+<a class="lewati" href="#katalog">Langsung ke produk</a>
+
+<header class="atas">
+  <a class="logo" href="#"><span class="logo-tanda" id="logo-tanda" aria-hidden="true"></span><span data-toko="nama">Toko</span></a>
+  <div class="atas-kanan">
+    <button type="button" id="jeda" class="jeda" aria-pressed="false">
+      <svg class="i-jeda" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+      <svg class="i-putar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+      <span class="jeda-teks">Jeda gerakan</span>
+    </button>
+    <a class="tombol garis" id="atas-lynk" href="#" target="_blank" rel="noopener" hidden>Lynk.id</a>
+  </div>
+</header>
+
+<main>
+  <section class="pembuka">
+    <div class="p-teks">
+      <h1 class="naik" style="--i:0" data-toko="slogan"></h1>
+      <p class="ket naik" style="--i:1" data-toko="keterangan"></p>
+      <p class="tangan naik" style="--i:2">pilih, bayar, langsung pakai
+        <svg class="coretan" viewBox="0 0 60 40" aria-hidden="true"><path pathLength="1" d="M4 6c18 2 34 10 40 26m0 0-9-4m9 4 3-9"/></svg>
+      </p>
+    </div>
+    <figure class="layar naik" style="--i:1" aria-label="Contoh animasi: ketik ide, AI menyusun, jadi video">
+      <div class="l-isi" aria-hidden="true">
+        <span class="l-bola"></span>
+        <span class="l-kata l-k1">ketik ide<i class="l-kursor"></i></span>
+        <span class="l-kata l-k2">AI menyusun</span>
+        <span class="l-kata l-k3">jadi <b>video!</b></span>
+        <span class="l-waktu"><i class="l-titik"></i><i class="l-titik"></i><i class="l-titik"></i><i class="l-kepala"></i></span>
+      </div>
+      <figcaption>contoh gerakan</figcaption>
+    </figure>
+  </section>
+
+  <section id="unggulan-blok" class="bagian" aria-labelledby="judul-unggulan" hidden>
+    <h2 id="judul-unggulan" class="judul-bagian naik" style="--i:3">Produk unggulan <span class="tangan">pilihan toko</span></h2>
+    <article id="unggulan" class="unggulan naik" style="--i:4"></article>
+  </section>
+
+  <a id="wa-kartu" class="wa-kartu naik" style="--i:5" target="_blank" rel="noopener" hidden>
+    <span class="wa-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 19.5l1.2-3.6A8 8 0 1 1 9 19.1z"/><path d="M9 11h.01M12.5 11h.01M16 11h.01"/></svg></span>
+    <span class="wa-teks"><b>Tanya dulu lewat WhatsApp</b><small>Bingung pilih produk? Tanya sebelum beli.</small></span>
+    <svg class="panah" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+  </a>
+
+  <section id="katalog" class="bagian katalog" aria-labelledby="judul-katalog">
+    <h2 id="judul-katalog" class="judul-bagian">Semua produk <span id="jumlah" class="jumlah"></span> <span class="tangan">ketuk untuk detail</span></h2>
+    <label class="cari">
+      <span class="sr">Cari produk</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="cari" type="search" placeholder="Cari produk, misal: e-book" autocomplete="off" enterkeyhint="search">
+      <kbd aria-hidden="true">/</kbd>
+    </label>
+    <div id="kategori" class="kategori" role="group" aria-label="Saring kategori"></div>
+    <ul id="daftar" class="daftar"></ul>
+    <div id="kosong" class="kosong" hidden>
+      <p>Tidak ada produk yang cocok dengan pencarianmu.</p>
+      <button type="button" class="tombol garis" id="reset">Tampilkan semua produk</button>
+    </div>
+  </section>
+
+  <section class="bagian cara" aria-labelledby="judul-cara">
+    <h2 id="judul-cara" class="judul-bagian">Cara beli <span class="tangan">cuma 3 langkah</span></h2>
+    <ol>
+      <li><span><b>Pilih produk</b> lalu tekan tombol <b>Beli di Lynk.id</b>.</span></li>
+      <li><span><b>Bayar di Lynk.id</b> pakai QRIS, e-wallet, atau transfer bank.</span></li>
+      <li><span><b>File dikirim otomatis</b> ke email yang kamu isi saat membayar.</span></li>
+    </ol>
+  </section>
+</main>
+
+<footer class="kaki">
+  <p class="kaki-nama" data-toko="nama"></p>
+  <nav id="kontak" class="kontak" aria-label="Kontak"></nav>
+  <nav class="kontak" aria-label="Legal">
+    <a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a>
+    <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+    <a href="kebijakan-refund.html">Pengembalian Dana</a>
+  </nav>
+  <p class="kecil">&copy; <span id="tahun"></span> <span data-toko="nama"></span></p>
+</footer>
+
+<dialog id="detail" class="detail" aria-labelledby="d-judul">
+  <form method="dialog"><button class="tutup" aria-label="Tutup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></form>
+  <div id="d-gambar" class="d-gambar"></div>
+  <div class="d-isi">
+    <p id="d-kategori" class="d-kategori"></p>
+    <h2 id="d-judul"></h2>
+    <p id="d-harga" class="d-harga"></p>
+    <p id="d-ringkas"></p>
+    <ul id="d-fitur" class="d-fitur"></ul>
+    <div id="d-butuh-blok" class="d-butuh" hidden>
+      <h3>Yang dibutuhkan</h3>
+      <ul id="d-butuh"></ul>
+    </div>
+    <div class="d-bawah">
+      <label id="d-setuju" class="setuju" hidden>
+        <input type="checkbox" id="d-setuju-cek">
+        <span id="d-setuju-teks"></span>
+      </label>
+      <div class="d-aksi">
+        <a id="d-beli" class="tombol" target="_blank" rel="noopener"></a>
+        <button id="d-bagikan" class="tombol garis" type="button">Bagikan</button>
+      </div>
+      <p id="d-catatan" class="d-catatan">Pembayaran lewat Lynk.id. Link unduhan dikirim ke email yang kamu isi saat membayar.</p>
+      <a id="d-wa" class="d-wa" target="_blank" rel="noopener" hidden>Masih ragu? Tanya dulu lewat WhatsApp</a>
+    </div>
+  </div>
+</dialog>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script src="data/produk.js"></script>
+<script src="app.js"></script>
+<script src="langit.js"></script>
+</body>
+</html>

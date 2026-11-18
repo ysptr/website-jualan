@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Syarat &amp; Ketentuan</title>
+<meta name="theme-color" content="#0b1f1b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Grandstander:wght@700;800&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="atas">
+  <a class="logo" href="./"><span class="logo-tanda" id="logo-tanda" aria-hidden="true"></span><span data-toko="nama">Toko</span></a>
+  <a class="tombol garis" href="./#katalog">Lihat produk</a>
+</header>
+<main class="legal">
+  <h1>Syarat &amp; Ketentuan</h1>
+  <p class="kecil">Terakhir diperbarui: <span data-toko="diperbarui"></span></p>
+  <p class="contoh">Ini contoh teks. Sesuaikan dengan cara kerja tokomu sebelum dipakai.</p>
+  <h2>Tentang toko ini</h2>
+  <p><b data-toko="nama"></b> menjual produk digital berupa file yang diunduh. Tidak ada barang fisik yang dikirim.</p>
+  <h2>Pembelian dan pembayaran</h2>
+  <p>Pembayaran diproses oleh Lynk.id. Setelah pembayaran berhasil, link unduhan dikirim ke email yang kamu isi saat membayar. Pastikan email tersebut benar.</p>
+  <p>Sebelum membeli, baca bagian <b>Yang dibutuhkan</b> di halaman produk. Beberapa produk meminta kamu mencentang syarat lebih dulu.</p>
+  <h2>Hak pakai</h2>
+  <p>Kamu boleh memakai produk untuk kebutuhan pribadi atau usahamu sendiri. Kamu tidak boleh menjual ulang, membagikan, atau mengunggah file produk agar bisa diunduh orang lain.</p>
+  <h2>Perubahan</h2>
+  <p>Syarat ini bisa diperbarui sewaktu-waktu. Tanggal di atas menunjukkan perubahan terakhir.</p>
+  <h2>Kontak</h2>
+  <p>Pertanyaan soal halaman ini bisa dikirim lewat <span id="kontak-legal">kontak di bagian bawah halaman utama</span>.</p>
+  <p><a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a> · <a href="kebijakan-privasi.html">Kebijakan Privasi</a> · <a href="kebijakan-refund.html">Pengembalian Dana</a></p>
+</main>
+<script src="data/produk.js"></script>
+<script>
+  // isi nama toko & angka dari data/produk.js
+  const T = window.TOKO || {};
+  document.querySelectorAll("[data-toko]").forEach((el) => (el.textContent = T[el.dataset.toko] ?? ""));
+  document.title += " | " + (T.nama || "Toko");
+  document.getElementById("logo-tanda").textContent = (T.nama || "").trim().charAt(0);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const k = [T.email && '<a href="mailto:' + esc(T.email) + '">' + esc(T.email) + '</a>', T.whatsapp && '<a href="https://wa.me/' + T.whatsapp.replace(/\D/g, "") + '">WhatsApp ' + esc(T.whatsapp) + '</a>'].filter(Boolean);
+  if (k.length) document.getElementById("kontak-legal").innerHTML = k.join(" atau ");
+</script>
+</body>
+</html>
